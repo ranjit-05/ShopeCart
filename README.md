@@ -260,7 +260,7 @@ This application is strictly configured for **Razorpay Test Mode**.
 
 ## Deployment Links
 
-- **Frontend (Vercel)**: https://shop-kart-beta-lemon.vercel.app/
+- **Frontend (Vercel)**: https://shope-cart.vercel.app/
 - **Backend (Render)**: https://shopkart-api-nqn1.onrender.com
 - **GitHub Repository**: `https://github.com/ranjit-05/ShopeCart.git`
 

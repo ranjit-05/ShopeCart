@@ -21,6 +21,7 @@ const frontendUrls = (process.env.FRONTEND_URL || '')
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
+  'https://shope-cart.vercel.app',
   ...frontendUrls
 ];
 
@@ -29,7 +30,13 @@ app.use(cors({
     // Allow requests with no origin (e.g. mobile apps, curl, Postman)
     if (!origin) return callback(null, true);
     const normalizedOrigin = origin.replace(/\/$/, '');
-    if (allowedOrigins.includes(normalizedOrigin)) {
+    let isVercel = false;
+    try {
+      const hostname = new URL(origin).hostname;
+      if (hostname.endsWith('.vercel.app')) isVercel = true;
+    } catch (_) {}
+
+    if (allowedOrigins.includes(normalizedOrigin) || isVercel) {
       return callback(null, true);
     }
     return callback(new Error(`Origin ${origin} not allowed by CORS`));
